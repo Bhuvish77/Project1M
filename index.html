@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ansley!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600;800&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffe3e8; /* Soft light pink */
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Floating Hearts Background Animation */
+        .heart {
+            position: absolute;
+            color: #ff6b8b;
+            font-size: 20px;
+            pointer-events: none;
+            bottom: -50px;
+            animation: floatUp 6s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-110vh) translateX(var(--randomX)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Container for Stages */
+        .stage-container {
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+            z-index: 10;
+            padding: 20px;
+        }
+
+        /* Typography & Stages styling */
+        .huge-text {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4.5rem;
+            color: #d81b60;
+            text-shadow: 3px 3px 0px #fff;
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            line-height: 1.2;
+        }
+
+        .sub-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #c2185b;
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Interactive Buttons */
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+            align-items: center;
+        }
+
+        .btn {
+            background-color: #ffffff;
+            color: #d81b60;
+            border: 2px solid #d81b60;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.1);
+        }
+
+        .btn:hover {
+            background-color: #d81b60;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(216, 27, 96, 0.25);
+        }
+
+        /* Countdown */
+        .countdown-number {
+            font-family: 'Fredoka One', cursive;
+            font-size: 8rem;
+            color: #ff1744;
+            text-shadow: 4px 4px 0px #fff;
+            animation: pulse 1s infinite;
+        }
+
+        /* Final Video & Look at Me Stage */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 25px auto;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Animations */
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive styling */
+        @media (max-width: 600px) {
+            .huge-text { font-size: 2.8rem; }
+            .sub-text { font-size: 1.8rem; }
+            .countdown-number { font-size: 5rem; }
+            .btn { font-size: 1rem; padding: 12px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="stage1" class="stage-container">
+        <h1 class="huge-text">HAPPY 19 ERUMA 🐮❤️</h1>
+    </div>
+
+    <div id="stage2" class="stage-container hidden">
+        <h1 class="huge-text">READY FOR THE SURPRISE?</h1>
+    </div>
+
+    <div id="stage3" class="stage-container hidden">
+        <h2 class="sub-text">ANY GUESSES!!!! 🤔</h2>
+        <div class="options-grid">
+            <button class="btn" onclick="handleGuess()">Option 1. Good Birthday Message</button>
+            <button class="btn" onclick="handleGuess()">Option 2. Memory Timeline of Our Friendship</button>
+            <button class="btn" onclick="handleGuess()">Option 3. Photo Slideshow of our Memories</button>
+        </div>
+    </div>
+
+    <div id="stage4" class="stage-container hidden">
+        <h1 class="huge-text">Ahh Haa!!! <br>None of the Options are Correct 😜</h1>
+    </div>
+
+    <div id="stage5" class="stage-container hidden">
+        <div id="countdown" class="countdown-number">10</div>
+    </div>
+
+    <div id="stage6" class="stage-container hidden">
+        <h1 class="huge-text">SURPRISE!!!! 🎉🎉</h1>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID_HERE?rel=0&showinfo=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <button class="btn" onclick="goToFinalStage()" style="margin-top: 15px;">Next 👉</button>
+    </div>
+
+    <div id="stage7" class="stage-container hidden">
+        <h1 class="huge-text" style="font-size: 6rem; color: #c2185b;">Look at Me 👉</h1>
+    </div>
+
+    <script>
+        // --- Floating Hearts Generator ---
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            // Randomly choose between a couple of heart shapes
+            heart.innerHTML = Math.random() > 0.5 ? '❤️' : '💖';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+            // Set custom horizontal drift for the keyframe animation
+            heart.style.setProperty('--randomX', (Math.random() * 200 - 100) + 'px');
+            // Randomize duration to make it look organic
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            
+            document.body.appendChild(heart);
+            
+            // Remove from DOM after animation completes
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+        // Spawn hearts continuously
+        setInterval(createHeart, 300);
+
+
+        // --- Timeline & Execution Logic ---
+        window.addEventListener('DOMContentLoaded', () => {
+            // Stage 1 stays for 3 seconds, then transitions to Stage 2
+            setTimeout(() => {
+                transitionStages('stage1', 'stage2');
+                
+                // Stage 2 stays for 3 seconds, then transitions to Stage 3 (Guesses)
+                setTimeout(() => {
+                    transitionStages('stage2', 'stage3');
+                }, 10000);
+
+            }, 10000);
+        });
+
+        function transitionStages(hideId, showId) {
+            const hideElement = document.getElementById(hideId);
+            const showElement = document.getElementById(showId);
+            
+            if(hideElement) hideElement.classList.add('hidden');
+            if(showElement) showElement.classList.remove('hidden');
+        }
+
+        // When she clicks any option
+        function handleGuess() {
+            transitionStages('stage3', 'stage4');
+            
+            // Show the wrong guess screen for 3.5 seconds, then launch countdown
+            setTimeout(() => {
+                transitionStages('stage4', 'stage5');
+                startCountdown();
+            }, 9500);
+        }
+
+        // The 10 to 0 Countdown
+        function startCountdown() {
+            let count = 10;
+            const countdownElement = document.getElementById('countdown');
+            
+            const timer = setInterval(() => {
+                count--;
+                if (count >= 0) {
+                    countdownElement.innerText = count;
+                } else {
+                    clearInterval(timer);
+                    // Countdown finished, reveal the Video Surprise!
+                    transitionStages('stage5', 'stage6');
+                }
+            }, 1000);
+        }
+
+        // Final step execution ender
+        function goToFinalStage() {
+            transitionStages('stage6', 'stage7');
+        }
+    </script>
+</body>
+</html>
